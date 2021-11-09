@@ -1,10 +1,8 @@
 book_filename: "finalproj"
 output_dir: docs
 delete_merged_file: true
-edit: https://github.com/dashansh/movie_industry_analysis
-/edit/main/%s
-view: https://github.com/dashansh/movie_industry_analysis
-/blob/main/%s
+edit: https://github.com/Dashansh/Movie_Industry_Analysis/edit/main/%s
+view: https://github.com/Dashansh/Movie_Industry_Analysis/blob/main/%s
 language:
   ui:
     chapter_name: "Chapter "
