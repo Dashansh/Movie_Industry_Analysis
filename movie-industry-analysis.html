@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Movie Industry Analysis | README</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Movie Industry Analysis | README" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Movie Industry Analysis | README" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MIA</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path=""><a href="#movie-industry-analysis"><i class="fa fa-check"></i><b>1</b> Movie Industry Analysis</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path=""><a href="#description"><i class="fa fa-check"></i><b>1.0.1</b> Description:</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="movie-industry-analysis" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Movie Industry Analysis</h1>
+<p>Data source:
+<a href="https://www.imdb.com/interfaces/">IMDB Dataset</a>
+<a href="https://grouplens.org/datasets/movielens/">Movie Lens</a></p>
+<div id="description" class="section level3" number="1.0.1">
+<h3><span class="header-section-number">1.0.1</span> Description:</h3>
+<p>What’s important to rating? Director or Actor?
+In the IMDB dataset, join the “crew”, “principals” and “ratings” datasets, to get crew.directors, principals.actors, and ratings.averageRatings for the same title.</p>
+<ol style="list-style-type: decimal">
+<li>How does age affect actor popularity?
+A. Get actors from the principals dataset (principals.category == “Actor”), their age from the basics dataset (basic.age = todayYear() - basics.birthYear), and averageRatings from the ratings dataset.</li>
+</ol>
+<p>Do directors prefer to work with particular actors?
+Get directors from the crew.directors and actors from principals.category.</p>
+<p>What actors tend to work with which actors?
+Use the principals to get the category==”Actor” column.</p>
+<p>What percentage of actors also work as producers, writers, etc.? Is it always the top-performing actors who become producers and directors?
+Using the name.basics extract the professions using primaryProfessions.</p>
+<p>Actors’ preference towards genre? And is there preference working out for them?
+To get the genres use title.basics and for actors use title.principals.category.</p>
+<p>How common is it for actors to be pigeonholed in a role or genre, which they started in?
+Use actors from title.principals.category, genre from title.basics and ratings from title.ratings.averageRating.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Dashansh/Movie_Industry_Analysis/edit/main/%s",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/Dashansh/Movie_Industry_Analysis/blob/main/%s",
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
