@@ -2,7 +2,7 @@
 
 ### Description
 
-This is a movie industry analysis project. We will gain insights about various staff level information. For example, Do directors prefer to work with particular actors? How does age affect actor popularity? What’s important to rating? Director or Actor? 
+This is a movie industry analysis project. We will gain insights about various staff level information. For example, Do directors prefer to work with particular actors? How does age affect actor popularity? What is important to rating? Director or Actor? 
 
 Book URL: https://dashansh.github.io/Movie_Industry_Analysis/
 
