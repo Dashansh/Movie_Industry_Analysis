@@ -1,1 +1,139 @@
 # Missing values
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(patchwork)
+```
+
+
+```{r}
+
+# Create Function for plotting missing data
+missing_plot_function <- function(data, per = FALSE){
+  
+  missing_patterns <- data.frame(is.na(data)) %>%
+  group_by_all() %>%
+  count(name = "count", sort = TRUE) %>%
+  ungroup()
+
+  # Sort by row count
+  missing_patterns <- missing_patterns[order(missing_patterns$count, decreasing = TRUE), ]
+  
+  # Get sorted colnames
+  sorted_colnames <- colSums(is.na(data)) %>% 
+  sort(decreasing = TRUE)
+  
+  # Sort the data again wrt the sorted colnames
+  missing_patterns <- missing_patterns[, append(names(sorted_colnames), "count")]
+  row_number <- which(
+    !apply(as.data.frame(missing_patterns)[1:dim(missing_patterns)[2]-1], 1, any))
+  
+  # Rownames columns will serve as y-axis
+  missing_patterns$rownames <- row.names(missing_patterns)
+  
+  # tidydata for plotting
+  tidy_data <- missing_patterns %>%
+    select(-count) %>% 
+    pivot_longer(
+      -rownames,
+      names_to = "Names",
+      values_to = "Missing") 
+  
+  # Plot the core missing value plot
+  core <- tidy_data %>% 
+    ggplot(aes(x = factor(Names, levels = names(sorted_colnames)),
+               y = fct_rev(factor(rownames, levels = missing_patterns$rownames)),
+               fill = Missing)) +
+    geom_tile(color = "white", show.legend = FALSE) +
+    annotate("text",
+           x = dim(data)[2] %/% 2,
+           y = nrow(missing_patterns) - row_number + 1,
+           label = "Complete cases") +
+    scale_fill_brewer(palette = "Blues") +
+    xlab("variable") +
+    ylab("missing pattern")
+  
+  # Plot the missing values of a column
+  top_df <- data.frame(as.list(sorted_colnames)) %>% 
+    pivot_longer(
+      everything(),
+      names_to = "Names",
+      values_to = "num_rows_missing")
+  
+  if (per) {
+    top_df$num_rows_missing = top_df$num_rows_missing*100/nrow(data)
+  }
+    
+  top <- top_df %>% 
+    ggplot(aes(x = factor(Names, levels = names(sorted_colnames)),
+               y = num_rows_missing)) +
+    geom_bar(stat = "identity",  fill = "#9ecae1") +
+    xlab("") +
+    ylab(ifelse(per, "% rows missing", "num rows missing"))
+  
+  # plot the row count for patterns
+  right_df <- missing_patterns
+  
+  if (per) {
+    right_df$count = right_df$count*100/nrow(data)
+  }
+    
+  right <- right_df %>% 
+    ggplot(aes(x = fct_rev(factor(rownames, levels = missing_patterns$rownames)),
+               y = count)) +
+    geom_bar(stat = "identity",  fill = "#9ecae1") +
+    coord_flip() +
+    xlab("") +
+    ylab(ifelse(per, "% rows", "row count"))
+  
+  design <- "
+    1#
+    23
+  "
+  
+  top + core + right + plot_layout(design = design, widths = c(3,1), heights = c(1,3))
+}
+```
+
+
+As the first two plots indicate, there are only missing values ('NA') in the primaryProfession column in the original data set. From the [site](https://www.imdb.com/interfaces/), ‘\N’ is used by the creators to denote that a particular field is missing or null for that title/name and for the deathYear column if it is not applicable. Although we are unsure why the creators were not consistent with using '\N' as their missing value indicator, we found '\N' in columns birthYear, deathYear, and knownForTitle and 'NA' in only the primaryProfession column.After further analysis we made a few adjustments in order to clarify what data is actually missing data versus what data is not applicable for the respective column. For instance, if both birthYear and deathYear are '\N' for a given individual we can assume with some certainty that the birthday for that individual was not publicly available whereas if an individual has a birthYear provided and a '\N' in the deathYear column, we can assume the individual is still alive and therefore deathYear is not applicable for that individual. To deal with this discrepancy we replaced all birthYear '\N' with 'NA' as they are true missing values and replaced deathYear '\N' to 'NA' if the respective birthYear is 'NA'. With this modification it is now clear which individuals are missing birth information (true missing value) versus which individuals are still living (not applicable).
+
+```{r}
+
+name_basic_df <- read_delim(file = 'data.tsv', delim='\t')
+
+names(name_basic_df) <- c("BirthYear", "DeathYear", "Profession", "Title", "nconst", "PName")
+
+# Plotting missing data before engineering missing values.
+missing_plot_function(name_basic_df, per = TRUE) + 
+  plot_annotation(
+    title = 'Missing value plot',
+    subtitle = 'Before handling /Ns in percentage',
+    )
+
+missing_plot_function(name_basic_df, per = FALSE) + 
+  plot_annotation(
+    title = 'Missing value plot',
+    subtitle = 'Before handling /Ns in count',
+    )
+
+name_basic_df <- name_basic_df %>%
+  mutate(BirthYear = ifelse(BirthYear=='\\N', NA, BirthYear),
+         DeathYear = ifelse(is.na(BirthYear) & DeathYear =='\\N', NA, DeathYear),
+         Title = ifelse(Title=='\\N', NA, Title))
+  
+# Plotting missing data after engineering missing values
+missing_plot_function(name_basic_df, per = TRUE) + 
+  plot_annotation(
+    title = 'Missing value plot',
+    subtitle = 'After dealt with the /Ns in percentage',
+    )
+
+missing_plot_function(name_basic_df, per = FALSE) + 
+  plot_annotation(
+    title = 'Missing value plot',
+    subtitle = 'After dealt with the /Ns in count',
+    )
+
+```
+
