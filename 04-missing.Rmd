@@ -100,7 +100,7 @@ As the first two plots indicate, there are only missing values ('NA') in the pri
 
 ```{r}
 
-name_basic_df <- read_delim(file = 'data.tsv', delim='\t')
+name_basic_df <- read.csv(file = 'data.tsv', sep = '\t')
 
 names(name_basic_df) <- c("BirthYear", "DeathYear", "Profession", "Title", "nconst", "PName")
 
