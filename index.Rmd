@@ -7,3 +7,8 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+IMDb (Internet Movie Database) is an online database related to films, television series, home videos, video games, and streaming content online- including cast, production crew and personal biographies, plot summaries, trivia, ratings, and fan and critical reviews. IMDb began as a fan-operated movie database on the Usenet group "rec.arts.movies" in 1990, and moved to the web in 1993. It is now owned and operated by IMDb.com, Inc., a subsidiary of Amazon.
+
+We chose to explore IMDb data because our group’s common interest is film. With the IMDb data we explored different aspects of the film industry to see if we could find any interesting insights in the data. We were especially interested in exploring gender biases. We wanted to see if there was a drastic actor wage gap and lead actor age gap between genders. We also explored actor and actress ratings to see if there were any differences in overall ratings based on gender. 
+
+We also explored movie run time over time to see if movies are getting longer or shorter, most popular movie genres, average ratings across different types of media and countries with the most movie releases.

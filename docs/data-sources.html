@@ -79,15 +79,17 @@
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#graph-1"><i class="fa fa-check"></i><b>5.1</b> Graph 1</a></li>
-<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#graph-4"><i class="fa fa-check"></i><b>5.2</b> Graph 4</a></li>
-<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#graph-5"><i class="fa fa-check"></i><b>5.3</b> Graph 5</a></li>
-<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#graph-6"><i class="fa fa-check"></i><b>5.4</b> Graph 6</a></li>
-<li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#graph7"><i class="fa fa-check"></i><b>5.5</b> Graph7</a></li>
-<li class="chapter" data-level="5.6" data-path="results.html"><a href="results.html#graph8"><i class="fa fa-check"></i><b>5.6</b> Graph8</a></li>
-<li class="chapter" data-level="5.7" data-path="results.html"><a href="results.html#graph9"><i class="fa fa-check"></i><b>5.7</b> Graph9</a></li>
-<li class="chapter" data-level="5.8" data-path="results.html"><a href="results.html#graph10"><i class="fa fa-check"></i><b>5.8</b> Graph10</a></li>
-<li class="chapter" data-level="5.9" data-path="results.html"><a href="results.html#graph11"><i class="fa fa-check"></i><b>5.9</b> Graph11</a></li>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#grouped-ratings-of-top-rated-actor-actress-pairs"><i class="fa fa-check"></i><b>5.1</b> Grouped ratings of top rated actor-actress pairs</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#comparison-of-salary-of-actors-vs-actress"><i class="fa fa-check"></i><b>5.2</b> Comparison of Salary of Actors vs Actress</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#comparison-of-salary-of-actors-vs-actress-1"><i class="fa fa-check"></i><b>5.3</b> Comparison of Salary of Actors vs Actress</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#frequency-of-movie-genres"><i class="fa fa-check"></i><b>5.4</b> Frequency of movie genres</a></li>
+<li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#mosaic-category-and-genre"><i class="fa fa-check"></i><b>5.5</b> Mosaic category and genre</a></li>
+<li class="chapter" data-level="5.6" data-path="results.html"><a href="results.html#percentage-of-genres-from-2010-to-2020"><i class="fa fa-check"></i><b>5.6</b> Percentage of Genres From 2010 to 2020”</a></li>
+<li class="chapter" data-level="5.7" data-path="results.html"><a href="results.html#average-ratings-across-different-media"><i class="fa fa-check"></i><b>5.7</b> Average Ratings Across Different Media</a></li>
+<li class="chapter" data-level="5.8" data-path="results.html"><a href="results.html#median-age-of-actorsactress-from-1925-to-2020"><i class="fa fa-check"></i><b>5.8</b> Median Age of Actors/Actress From 1925 to 2020</a></li>
+<li class="chapter" data-level="5.9" data-path="results.html"><a href="results.html#average-movie-run-time-in-minutes-from-1920-to-2020"><i class="fa fa-check"></i><b>5.9</b> Average Movie Run Time in Minutes From 1920 to 2020</a></li>
+<li class="chapter" data-level="5.10" data-path="results.html"><a href="results.html#movie-run-time-minutes-from-1920-to-2020"><i class="fa fa-check"></i><b>5.10</b> Movie Run Time Minutes From 1920 to 2020</a></li>
+<li class="chapter" data-level="5.11" data-path="results.html"><a href="results.html#number-of-movies-released-by-country"><i class="fa fa-check"></i><b>5.11</b> Number of Movies Released By Country</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a>
 <ul>
@@ -115,6 +117,9 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
+<p>Our primary data source is IMDb (Internet Movie Database, <a href="https://datasets.imdbws.com" class="uri">https://datasets.imdbws.com</a>) which is owned and operated by IMDb.com, Inc., a subsidiary of Amazon. Sources for the IMDb data include on-screen credits, press kits, official bios, autobiographies, and interviews. While data from this site is collected and verified by IMDb with studios and filmmakers, the bulk of the information is submitted by people in the industry and website visitors.</p>
+<p>The IMDb datasets we used for this project have a consistent data format which utilizes an alphanumeric unique identifier for the title of each film and an alphanumeric unique identifier for each name/person (director, actor etc.). Types of variables in the dataset include strings, arrays of strings, integers and booleans. The only issue we came across when using this dataset was the way missing values and unknown data were handled which we will further discuss in the missing values chapter.</p>
+<p>Since IMDb does not contain salary data and one the topics we were interested in exploring was the gender pay gap in the film industry, we incorporated salary data from Forbes (<a href="https://www.forbes.com/sites/natalierobehmed/2017/08/22/full-list-the-worlds-highest-paid-actors-and-actresses-2017/?sh=5b3efcbb3751" class="uri">https://www.forbes.com/sites/natalierobehmed/2017/08/22/full-list-the-worlds-highest-paid-actors-and-actresses-2017/?sh=5b3efcbb3751</a>). Unfortunately, we could not find a full dataset of actor/actress salary information without a paid subscription. Although this type of data gathering is not ideal, we decided to pivot around the restricted access to the film industry’s salary data and copied the data from Forbes into a csv. Since this data was manually inputted, we assured it was in a format consistent to the IMDb data and all unique identifiers matched.</p>
 
 </div>
             </section>

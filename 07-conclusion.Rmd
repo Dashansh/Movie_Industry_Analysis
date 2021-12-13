@@ -1,2 +1,5 @@
 # Conclusion
 
+Through our data exploration and analysis of the IMDb datasets, we were able to visualize the movie industry pay and age biases. Although the age gap of lead actors and actresses has gotten smaller since the 1920’s, the median age difference is still over 10 years. From the 2017 salary data we can also see that the top-rated actor made almost 40 million dollars more than the top-rated actress. We also found drama and documentary are the most common movie genres from 1920 to 2020 by more than double of that of the third most common genre (comedy). 
+
+Although our overall goal for this project was met, it did have shortcomings. Salary data for the movie industry was not publicly available without a paid subscription so we were not able to access more than one year’s worth of salary information for the top paid actors/actresses. If given more time and resources, we would have liked to further explore the gender pay gap overtime.
