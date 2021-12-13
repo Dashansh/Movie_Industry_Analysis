@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    
+    <style>
+        html, body, #vis {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="year">Please select a year: </label>
+        <input type="range" min=1950 max=2020 step=10 id="year" value=1950 oninput="selected_year.value = year.value">
+        <output name="selected_year" id="selected_year">1950</output>
+    </form>
+    <div id="vis">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

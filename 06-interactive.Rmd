@@ -1,3 +1,11 @@
 # Interactive component
 
 
+## some description
+
+```{r}
+
+htmltools::includeHTML("d3/d3_alluvial.html")
+
+```
+
