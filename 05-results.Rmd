@@ -1,1 +1,171 @@
 # Results
+
+```{r, results=FALSE, message=FALSE}
+library(tidyverse)
+library(vcd)
+library(ggmap)
+library(choroplethr)
+```
+
+
+## Graph 1
+
+```{r}
+
+graph1 <- read.csv('resources/uploading_data/graph1.csv')
+
+graph1 %>% 
+  filter(group <= 5) %>%
+  ggplot(aes(x = group, y = ratings, fill = category)) +
+  scale_fill_manual(values = c( "lightblue3", "pink")) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("Grouped ratings of top rated actor-actress pairs") +
+  ylab("Ratings") +
+  xlab("Groups of Actors-Actresses by descending order ratings")
+
+```
+## Graph 2
+
+```{r}
+
+graph2_3 <- read_csv('resources/uploading_data/graph2_3.csv')
+
+graph2_3 %>% 
+  ggplot(aes(x = Salary, y = factor(group, level=seq(1:10)), color = category)) +
+  geom_point() +
+  ggtitle("Comparison of Salary of Actors vs Actress") +
+  scale_color_manual(values=c("blue", "red"))+
+  ylab("Grouped number")+
+  xlab("$Salary In Millions")
+```
+## Graph 3
+
+```{r}
+
+graph2_3 %>%
+  ggplot(aes(x = Salary, y = fct_reorder(primaryName, Salary))) +
+  geom_point() +
+  ggtitle("Comparison of Salary of Actors vs Actress") +
+  ylab("Actors/Actress")+
+  xlab("$Salary In Millions")
+
+```
+
+## Graph 4
+
+```{r}
+
+graph4 <- read.csv('resources/uploading_data/graph4.csv')
+
+graph4 %>%
+  ggplot(aes(y = fct_rev(fct_infreq(genres)))) +
+  geom_bar() +
+  ggtitle("Frequency of movie genres") +
+  ylab("Genres") +
+  xlab("Count")
+
+```
+
+## Graph 5
+
+```{r}
+
+graph5 <- read.csv('resources/uploading_data/graph5.csv')
+
+mosaic(genres~category, direction = c("v", "h"), graph5)
+
+```
+
+## Graph 6
+
+```{r}
+
+graph6 <- read.csv('resources/uploading_data/graph6.csv')
+
+graph6 %>%
+  ggplot(aes(x = factor(startYear), y = per, group = genres, color = genres)) +
+  geom_line() +
+  ylab("Percentage of Genres")+
+  xlab("Years")+
+  ggtitle("Percentage of Genres From 2010 to 2020")+
+  geom_point()
+
+```
+
+## Graph7
+
+```{r}
+
+graph7 <- read.csv('resources/uploading_data/graph7.csv')
+
+graph7 %>% 
+  ggplot(aes(x = reorder(titleType, averageRating, median), y = averageRating)) +
+  geom_boxplot(outlier.shape = NA) +
+  coord_flip()+
+  xlab("Media Type")+
+  ylab("Average Ratings")+
+  ggtitle("Average Ratings Across Different Media")+
+  stat_boxplot(geom = "errorbar")
+
+```
+
+## Graph8
+
+```{r}
+
+graph8 <- read.csv('resources/uploading_data/graph8.csv')
+
+graph8 %>%
+  filter(startYear >= 1920 & startYear <= 2020) %>% 
+  ggplot(aes(x = startYear, fill = category)) +
+          geom_ribbon(aes(ymin = low_age, ymax = high_age), alpha = 0.2) +
+          scale_fill_manual(values = c( "blue", "pink"))+
+          geom_line(aes(y = med_age, color = category)) +
+          ylab("Median Age of Actors and Actress")+
+          xlab("Years")+
+          ggtitle("Median Age of Actors/Actress From 1925 to 2020")+
+          scale_color_manual(values = c( "blue", "red"))
+
+```
+
+## Graph9
+
+```{r}
+
+graph9 <- read.csv('resources/uploading_data/graph9.csv')
+
+graph9 %>% 
+  ggplot(aes(x = startYear, y = avgruntime)) +
+  geom_line()+
+  ylab("Average Movie Run Time in Minutes") +
+  xlab("Years")+ 
+  ggtitle("Average Movie Run Time in Minutes From 1920 to 2025")
+
+```
+
+## Graph10
+
+```{r}
+
+graph10 <- read.csv('resources/uploading_data/graph10.csv')
+
+graph10 %>% 
+  ggplot(aes(x=factor(decade), y=runtimeMinutes)) +
+  stat_boxplot(geom = "errorbar")+
+  geom_boxplot(outlier.shape = NA)+
+  ylab("Movie Run Time in Minutes") +
+  xlab("Years")+
+  ggtitle("Movie Run Time Minutes From 1920 to 2020")
+
+```
+
+## Graph11
+
+```{r}
+
+graph11 <- read.csv('resources/uploading_data/graph11.csv')
+
+choroplethr::country_choropleth(graph11, title = "Number of Movies Released By Country", legend = "Number of Movies Released", num_colors = 7, zoom = NULL)
+
+```
+

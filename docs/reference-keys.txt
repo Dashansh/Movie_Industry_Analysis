@@ -5,3 +5,12 @@ missing-values
 results
 interactive-component
 conclusion
+graph-1
+graph-4
+graph-5
+graph-6
+graph7
+graph8
+graph9
+graph10
+graph11
