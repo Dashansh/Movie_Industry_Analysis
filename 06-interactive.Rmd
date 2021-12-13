@@ -5,7 +5,7 @@
 
 ```{r}
 
-htmltools::includeHTML("d3/d3_alluvial.html")
+htmltools::includeHTML("d3/index.html")
 
 ```
 
