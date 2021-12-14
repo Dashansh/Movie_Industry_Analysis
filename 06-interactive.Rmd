@@ -1,7 +1,8 @@
 # Interactive component
 
+## Average runtimes of movie by genres over decades.
 
-## some description
+This graph is an interactive bar plot of average movie run time in minutes for each genre over time. From this interactive graph we can see in 1950 there weren’t any biography films therefore average runtime was 0 minutes and by 1960 biography films averaged over 130 minutes. Biography films continue to fluctuate the most out of all genres throughout the rest of the decades. This fluctuation emphasizes the value in using interactive graphs, such as the one we created, which allows the user to choose a decade and in turn a wider range of information is visible than what would be available in a static graph.
 
 ```{r}
 
