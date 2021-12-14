@@ -37,7 +37,7 @@ This Cleveland dot plot shows the top 10 ranked actors and actresses (grouped) a
 graph2_3 <- read_csv('resources/uploading_data/graph2_3.csv')
 
 graph2_3 %>% 
-  ggplot(aes(x = Salary, y = factor(group, level=seq(1:10)), color = category)) +
+  ggplot(aes(x = Salary, y = fct_rev(factor(group, level=seq(1:10))), color = category)) +
   geom_point() +
   ggtitle("Comparison of Salary of Actors vs Actress") +
   scale_color_manual(values=c("blue", "red"))+
