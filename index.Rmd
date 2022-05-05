@@ -1,6 +1,5 @@
 --- 
 title: "Movie Industry Analysis"
-author: "Anna Dai, Victoria Edwards, Dashansh Prajapati"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
